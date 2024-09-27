@@ -1,0 +1,23 @@
+name: Run Tests
+
+on:
+  
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: npm test
+    
+      - name: Lint code
+        run: npm run lint
+
+    
