@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vue-tsc && vite build && vite build --ssr"
+        "build": "vue-tsc && vite build && vite build --ssr",
+        "test": "jest"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.2.0",
@@ -23,4 +24,5 @@
     "dependencies": {
         "sweetalert2": "^11.13.3"
     }
+    
 }
