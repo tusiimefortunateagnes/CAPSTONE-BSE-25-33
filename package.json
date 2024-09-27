@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build && vite build --ssr",
-        "test": "jest"
+        "test": "jest --passWithNoTests"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.2.0",
