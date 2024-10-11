@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('description')->nullable();
-            $table->foreignId('permission_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('permission_id')->constrained()->onDelete('cascade');
             $table->string('guard_name')->default('web');
             $table->softDeletes();
             $table->timestamps();
