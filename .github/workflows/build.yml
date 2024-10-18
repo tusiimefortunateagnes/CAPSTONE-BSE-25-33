@@ -38,8 +38,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
-
       - name: Build the project
         run: npm run build
