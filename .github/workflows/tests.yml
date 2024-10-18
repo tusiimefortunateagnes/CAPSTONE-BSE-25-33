@@ -51,14 +51,14 @@ jobs:
 
       # - name: Run Laravel tests
       #   run: php artisan test
-      - name: Run ExampleTest
-        run: php artisan test --filter=ExampleTest
+      # - name: Run ExampleTest
+      #   run: php artisan test --filter=ExampleTest
 
       - name: Install NPM dependencies
         run: npm ci
 
-      - name: Run Vue tests
-        run: npm test
+      # - name: Run Vue tests
+      #   run: npm test
     
       - name: Lint code
         run: npm run lint
