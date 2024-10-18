@@ -5,7 +5,6 @@ import { createApp, h, DefineComponent } from 'vue';
 import { createInertiaApp, Head } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import AuthenticatedLayout from './Layouts/AuthenticatedLayout.vue';
 import ProjectItem from './Components/ProjectItem.vue'
 const appName = import.meta.env.VITE_APP_NAME || 'COTE Timesheets';
@@ -16,7 +15,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue)
+            // .use(ZiggyVue)
             .component('Head', Head)
             .component('ProjectItem', ProjectItem)
             .component('AuthenticatedLayout', AuthenticatedLayout)
