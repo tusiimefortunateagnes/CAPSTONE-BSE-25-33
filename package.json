@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && vite build && vite build --ssr",
-        "test": "jest --passWithNoTests",
+        "test": "jest",
         "lint": "eslint ."
     },
     "devDependencies": {
