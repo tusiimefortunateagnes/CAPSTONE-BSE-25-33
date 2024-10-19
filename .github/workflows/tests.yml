@@ -49,13 +49,17 @@ jobs:
       - name: Run migrations
         run: php artisan migrate --force
 
-      # - name: Run Laravel tests
-      #   run: php artisan test
+      # Add this step to build the Vite assets
+      - name: Build assets with Vite
+        run: npm run build
+        
+      
+      - name: Run Laravel tests
+        run: php artisan test
       # - name: Run ExampleTest
       #   run: php artisan test --filter=ExampleTest
-      - name: Run tests
-        # run: vendor/bin/phpunit 
-        run: php artisan test
+      # - name: Run tests
+      #   run: vendor/bin/phpunit 
 
       
 
