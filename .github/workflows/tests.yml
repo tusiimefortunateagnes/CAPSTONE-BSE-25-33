@@ -54,7 +54,8 @@ jobs:
       # - name: Run ExampleTest
       #   run: php artisan test --filter=ExampleTest
       - name: Run tests
-        run: vendor/bin/phpunit 
+        # run: vendor/bin/phpunit 
+        run: php artisan test
 
       
 
