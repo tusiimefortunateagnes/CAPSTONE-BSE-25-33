@@ -53,6 +53,10 @@ jobs:
       #   run: php artisan test
       # - name: Run ExampleTest
       #   run: php artisan test --filter=ExampleTest
+      - name: Run tests
+        run: vendor/bin/phpunit 
+
+      
 
       - name: Install NPM dependencies
         run: npm ci

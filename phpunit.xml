@@ -4,14 +4,25 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+
+
     <testsuites>
+        <testsuite name="Specific Unit Test">
+            <file>./tests/Unit/ExampleTest.php</file>
+        </testsuite>
+        <testsuite name="Specific Feature Test">
+            <file>./tests/Feature/ExampleTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <!-- <testsuites>
         <testsuite name="Unit">
             <directory>tests/Unit</directory>
         </testsuite>
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
-    </testsuites>
+    </testsuites> -->
     <source>
         <include>
             <directory>app</directory>
