@@ -14,6 +14,11 @@
         @routes
         @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
+
+        @if(app()->environment('production'))
+    {{ vite(['resources/css/app.css', 'resources/js/app.js']) }}
+@endif
+
     </head>
     <body class="font-sans antialiased">
         @inertia
