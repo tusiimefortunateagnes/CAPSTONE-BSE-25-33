@@ -22,7 +22,8 @@ const confirmUserDeletion = () => {
 };
 
 const deleteUser = () => {
-    form.delete(route('profile.destroy'), {
+    // Replaced route('profile.destroy') with hardcoded URL
+    form.delete('/profile/destroy', {
         preserveScroll: true,
         onSuccess: () => closeModal(),
         onError: () => passwordInput.value?.focus(),

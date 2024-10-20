@@ -4,9 +4,7 @@
   <AuthenticatedLayout>
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div
-          class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
-        >
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 text-gray-900 dark:text-gray-100">
             <!-- title -->
             <h3 class="font-bold text-xl">Add your task</h3>
@@ -16,7 +14,6 @@
               @submit.prevent="addTask"
             >
               <!-- Task Date -->
-
               <form-element
                 type="date"
                 v-model="form.date"
@@ -31,9 +28,7 @@
                 label="Description"
                 v-model="form.task_description"
                 @update:modelValue="form.task_description"
-                :errorClass="
-                  form.errors.task_description ? 'border-red-600' : ''
-                "
+                :errorClass="form.errors.task_description ? 'border-red-600' : ''"
                 :errorText="form.errors.task_description"
               />
               <!-- status -->
@@ -45,17 +40,15 @@
                 :errorText="form.errors.status"
                 type="dropdown"
               />
-              <div
-                class="w-full my-5 flex flex-col justify-center place-content-center items-center"
-              >
+              <div class="w-full my-5 flex flex-col justify-center place-content-center items-center">
                 <button
                   :disabled="loading"
                   type="submit"
-                  :class="`px-4 py-2 w-[29em] bg-orange-600 font-bold  text-white rounded-md hover:bg-orange-600 focus:outline-none`"
+                  :class="`px-4 py-2 w-[29em] bg-orange-600 font-bold text-white rounded-md hover:bg-orange-600 focus:outline-none`"
                 >
-                  <span v-if="loading" class="spinner-border spinner-border-sm"
-                    >Processing.....</span
-                  >
+                  <span v-if="loading" class="spinner-border spinner-border-sm">
+                    Processing.....
+                  </span>
                   <span v-else>Add Task</span>
                 </button>
               </div>
@@ -71,6 +64,7 @@
 import { Head, useForm } from "@inertiajs/vue3";
 import FormElement from "@/Components/FormElement.vue";
 import Swal from "sweetalert2";
+
 export default {
   components: {
     Head,
@@ -88,13 +82,13 @@ export default {
   },
   methods: {
     addTask() {
-      // Add your logic here
-      this.form.post(route("addTask"), {
+      // Replaced the route() function with a hardcoded URL for adding tasks
+      this.form.post('/tasks/add', {
         preserveScroll: true,
         onProgress: () => {
           this.loading = true;
         },
-        onSuccess: (x) => {
+        onSuccess: () => {
           this.loading = false;
           Swal.fire({
             title: "Success",
@@ -106,13 +100,10 @@ export default {
           this.form.reset();
         },
         onError: (error) => {
-          console.log(error.error);
+          console.log(error);
         },
       });
     },
-    // captureData(data) {
-    //   console.log(data);
-    // },
   },
 };
 </script>

@@ -16,7 +16,8 @@ const form = useForm({
 });
 
 const updatePassword = () => {
-    form.put(route('password.update'), {
+    // Replaced route('password.update') with hardcoded URL
+    form.put('/password/update', {
         preserveScroll: true,
         onSuccess: () => {
             form.reset();
