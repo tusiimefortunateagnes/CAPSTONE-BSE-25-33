@@ -9,31 +9,51 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      
+      # Step to checkout the code from GitHub
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
+      # Set up Node.js for building the frontend assets
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-            node-version: '20'
+          node-version: '20'
 
-      - name: Install dependencies
+      # Install Node.js dependencies (for the frontend)
+      - name: Install Node.js dependencies
         run: npm install
 
+      # Step to install PHP and Composer
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, pdo, mysql
+
+      # Install Composer dependencies for Laravel backend
+      - name: Install Composer
+        run: sudo apt-get update && sudo apt-get install composer -y
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --verbose
+
+      # Build the project (frontend assets)
       - name: Build the project
         run: npm run build
 
-      - name: Run tests
+      # Run Laravel tests
+      - name: Run PHP/Laravel tests
         run: php artisan test
 
+      # Lint the frontend code
       - name: Lint code
         run: npm run lint
+
 
   # deploy:
   #   needs: build
