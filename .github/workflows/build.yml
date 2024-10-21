@@ -18,7 +18,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_DATABASE: manager
-          MYSQL_ROOT_PASSWORD:
+          MYSQL_ROOT_PASSWORD: mU35g!sha
         ports:
           - 3306:3306
         options: '--health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3'
@@ -62,7 +62,7 @@ jobs:
           echo "DB_PORT=3306" >> .env
           echo "DB_DATABASE=manager" >> .env
           echo "DB_USERNAME=root" >> .env
-          echo "DB_PASSWORD=" >> .env
+          echo "DB_PASSWORD=mU35g!sha" >> .env
 
       # Ensure MySQL is installed and running
       - name: Ensure MySQL is installed and running
