@@ -5,27 +5,16 @@ on:
     branches:
       - main
 
+  # push_request:
+  #   branches:
+  #     - main
+
+
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      
-      - name: Cache Composer dependencies
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-
       - name: Checkout code
         uses: actions/checkout@v3
       
@@ -34,9 +23,11 @@ jobs:
         with:
             node-version: '20'
 
-
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
         run: npm run build
+
+      - name: Run tests
+        run: npm test
