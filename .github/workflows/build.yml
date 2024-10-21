@@ -13,6 +13,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: manager
+          MYSQL_ROOT_PASSWORD:
+        ports:
+          - 3306:3306
+        options: '--health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3'
+
     steps:
       # Step to checkout the code from GitHub
       - name: Checkout code
@@ -42,6 +52,22 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --verbose
 
+
+      - name: Set environment variables
+        run: |
+          echo "APP_ENV=testing" >> .env
+          echo "APP_KEY=base64:jusFRrgOz5ZJUGO0izVwAerocCipnebEu5De/R9wbNM=" >> .env
+          echo "DB_CONNECTION=mysql" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env  # Use 'mysql' for GitHub Actions
+          echo "DB_PORT=3306" >> .env
+          echo "DB_DATABASE=manager" >> .env
+          echo "DB_USERNAME=root" >> .env
+          echo "DB_PASSWORD=" >> .env
+
+      # Ensure MySQL is installed and running
+      - name: Ensure MySQL is installed and running
+        run: sudo systemctl start mysql
+        
       - name: Generate application key
         run: php artisan key:generate
 
