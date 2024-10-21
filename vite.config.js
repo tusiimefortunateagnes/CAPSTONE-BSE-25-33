@@ -4,6 +4,19 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+
+    build: {
+        manifest: true,
+        rollupOptions: {
+          output: {
+            entryFileNames: 'assets/[name].[hash].js',
+            chunkFileNames: 'assets/[name].[hash].js',
+            assetFileNames: 'assets/[name].[hash].[ext]',
+          },
+        },
+      },
+
+
     plugins: [
         laravel({
             input: 'resources/js/app.ts',

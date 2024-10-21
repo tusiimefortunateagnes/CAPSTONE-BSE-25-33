@@ -52,6 +52,10 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --verbose
 
+      # Clear cache
+      - name: Clear Laravel cache
+        run: php artisan config:cache
+
 
       - name: Set environment variables
         run: |
@@ -74,6 +78,9 @@ jobs:
       # Build the project (frontend assets)
       - name: Build the project
         run: npm run build
+
+      - name: Run migrations
+        run: php artisan migrate --force
 
       # Run Laravel tests
       - name: Run PHP/Laravel tests
