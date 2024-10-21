@@ -5,9 +5,9 @@ on:
     branches:
       - main
 
-  # push_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - main
 
 
 jobs:
@@ -30,4 +30,17 @@ jobs:
         run: npm run build
 
       - name: Run tests
-        run: npm test
+        run: php artisan test
+
+      - name: Lint code
+        run: npm run lint
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: production
+  #     url: https://example.com
+
+  #   steps:
+         

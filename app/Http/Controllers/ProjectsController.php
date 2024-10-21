@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProjectsRequest;
 use App\Http\Requests\UpdateProjectsRequest;
 use App\Models\Projects;
+// use Inertia\Inertia;
 
 class ProjectsController extends Controller
 {
@@ -13,7 +14,12 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        // return Inertia::render('Welcome', [
+        //     'canLogin' => Route::has('login'),
+        //     'canRegister' => Route::has('register'),
+        //     'laravelVersion' => Application::VERSION,
+        //     'phpVersion' => PHP_VERSION,
+        // ]);
     }
 
     /**

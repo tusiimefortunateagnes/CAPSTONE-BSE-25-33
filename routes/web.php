@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivitiesController;
+// use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -15,6 +16,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+// Route::get('/', [ProjectsController::class, 'index'])->name('index');
 
 // Dashboard and Task Management Routes
 Route::middleware(['auth', 'verified'])->group(function () {
