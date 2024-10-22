@@ -41,7 +41,7 @@ const showingNavigationDropdown = ref(false);
                   :href="route('myTasks')"
                   :active="route().current('myTasks')"
                 >
-                  My Tasks
+                  MyTasks
                 </NavLink>
                 <NavLink
                   :href="route('projects')"
