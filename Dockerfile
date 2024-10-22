@@ -1,3 +1,4 @@
+# Use the official PHP image with PHP-FPM
 FROM php:8.2-fpm
 
 # Set working directory
@@ -5,6 +6,7 @@ WORKDIR /var/www
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
+    nginx \
     build-essential \
     libonig-dev \
     libpng-dev \
@@ -40,14 +42,17 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 # Set permissions
 COPY --chown=www-data:www-data . /var/www
 
-# Run the following Laravel optimization commands
+# Run Laravel optimization commands
 RUN php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache
 
-# Change current user to www-data
-USER www-data
+# Set up Nginx
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 9000 and start php-fpm server
+# Expose port 80 for Nginx and 9000 for PHP-FPM
+EXPOSE 80
 EXPOSE 9000
-CMD ["php-fpm"]
+
+# Start both PHP-FPM and Nginx
+CMD service nginx start && php-fpm
