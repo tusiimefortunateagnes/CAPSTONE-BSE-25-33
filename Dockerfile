@@ -51,7 +51,7 @@ RUN php artisan config:cache && \
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80 for Nginx and 9000 for PHP-FPM
-EXPOSE ${port}
+EXPOSE 80
 EXPOSE 9000
 
 # Start both PHP-FPM and Nginx
