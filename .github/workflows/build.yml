@@ -61,12 +61,13 @@ jobs:
         run: |
           echo "APP_ENV=testing" >> .env
           echo "APP_KEY=base64:jusFRrgOz5ZJUGO0izVwAerocCipnebEu5De/R9wbNM=" >> .env
-          echo "DB_CONNECTION=mysql" >> .env
-          echo "DB_HOST=127.0.0.1" >> .env  # Use 'mysql' for GitHub Actions
-          echo "DB_PORT=3306" >> .env
-          echo "DB_DATABASE=manager" >> .env
-          echo "DB_USERNAME=root" >> .env
-          echo "DB_PASSWORD=mU35g!sha" >> .env
+          echo "DB_CONNECTION=pgsql" >> .env
+          echo "DB_HOST=dpg-cshkqb68ii6s73bgn6fg-a" >> .env  # Render host
+          echo "DB_PORT=5432" >> .env
+          echo "DB_DATABASE=timesheetsdb_4rk3" >> .env
+          echo "DB_USERNAME=timesheetsdb_4rk3_user" >> .env
+          echo "DB_PASSWORD=9GJkIGSBa4FMyUXPR7LOW3CLL9qKKBLa" >> .env
+      
 
       # Ensure MySQL is installed and running
       - name: Ensure MySQL is installed and running
