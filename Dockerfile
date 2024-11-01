@@ -18,14 +18,17 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libpq-dev
+
+RUN docker-php-ext-install pdo_pgsql \  
+        && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath
+# Add this line to install PostgreSQL development files
+# Install the PostgreSQL PDO extension
 
 # Configure and install GD extension separately
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd
-
-# Install other PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
